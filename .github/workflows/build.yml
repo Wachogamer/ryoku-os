@@ -33,7 +33,7 @@ jobs:
         uses: blue-build/github-action@v1.8
         with:
           recipe: ${{ matrix.recipe }}
-          cli_flags: "--no-sign"
+          build_opts: "--no-sign"
           registry_token: ${{ github.token }}
           pr_event_number: ${{ github.event.number }}
 
