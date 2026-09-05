@@ -8,8 +8,8 @@ image-version: latest # Puedes anclar a una versión específica como 41 si quie
 modules:
   # Paquetes adicionales que se instalarán
   - type: rpm-ostree
-    copr:
-      - errornointernet/quickshell # Necesario para el entorno Ryoku
+    repos:
+      - copr:copr.fedorainfracloud.org:errornointernet:quickshell
     install:
       # Herramientas modernas de terminal
       - bat
