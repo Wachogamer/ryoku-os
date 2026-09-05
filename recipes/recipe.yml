@@ -6,13 +6,10 @@ base-image: ghcr.io/ublue-os/bazzite
 image-version: latest # Puedes anclar a una versión específica como 41 si quieres
 
 modules:
-  # Repositorios COPR adicionales
-  - type: copr
-    copr:
-      - errornointernet/quickshell # Necesario para el entorno Ryoku
-
   # Paquetes adicionales que se instalarán
   - type: rpm-ostree
+    copr:
+      - errornointernet/quickshell # Necesario para el entorno Ryoku
     install:
       # Herramientas modernas de terminal
       - bat
