@@ -10,6 +10,9 @@ modules:
   - type: rpm-ostree
     repos:
       - copr:copr.fedorainfracloud.org:errornointernet:quickshell
+      - copr:copr.fedorainfracloud.org:atim:starship
+      - copr:copr.fedorainfracloud.org:atim:yazi
+      - copr:copr.fedorainfracloud.org:solopasha:hyprland
     install:
       # Herramientas modernas de terminal
       - bat
