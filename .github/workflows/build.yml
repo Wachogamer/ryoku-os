@@ -1,0 +1,41 @@
+name: build-ryoku-os
+on:
+  schedule:
+    - cron: "00 06 * * *" # Build daily at 06:00 UTC
+  push:
+    branches:
+      - main
+    paths-ignore: # don't rebuild if only documentation has changed
+      - "**.md"
+  pull_request:
+  workflow_dispatch: # allow manually triggering builds
+
+jobs:
+  bluebuild:
+    name: Build Custom Image
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    strategy:
+      fail-fast: false
+      matrix:
+        recipe:
+          - recipe.yml
+    steps:
+       # Checkout the repository
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+       # Use the BlueBuild action to build the image
+      - name: Build Custom Image
+        uses: blue-build/github-action@v1.8
+        with:
+          recipe: ${{ matrix.recipe }}
+          cosign_private_key: ${{ secrets.SIGNING_SECRET }}
+          registry_token: ${{ github.token }}
+          pr_event_number: ${{ github.event.number }}
+
+          # enabled by default, disable if your image is small and you want faster builds
+          maximize_build_space: true

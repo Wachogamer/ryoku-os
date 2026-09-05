@@ -1,0 +1,59 @@
+name: ryoku-os
+description: Custom Ryoku OS based on Bazzite
+
+# La imagen base (bazzite usa KDE por defecto)
+base-image: ghcr.io/ublue-os/bazzite
+image-version: latest # Puedes anclar a una versión específica como 41 si quieres
+
+modules:
+  # Repositorios COPR adicionales
+  - type: copr
+    repos:
+      - errornointernet/quickshell # Necesario para el entorno Ryoku
+
+  # Paquetes adicionales que se instalarán
+  - type: rpm-ostree
+    install:
+      # Herramientas modernas de terminal
+      - bat
+      - btop
+      - eza
+      - fastfetch
+      - fd-find
+      - fish
+      - fzf
+      - zsh
+      - zsh-autosuggestions
+      - zsh-syntax-highlighting
+      - neovim
+      - ripgrep
+      - starship
+      - zoxide
+      
+      # Herramientas gráficas, multimedia y utilidades del sistema
+      - yazi
+      - cava
+      - cliphist
+      - hyprpicker
+      - ImageMagick
+      - jq
+      - ddcutil
+      - tesseract
+      - zbar
+      - ffmpeg
+      - yt-dlp
+
+  # Incluir comandos ujust
+  - type: justfiles
+    include:
+      - ryoku.just
+
+  # Puedes ejecutar scripts locales para configurar el sistema operativo durante la compilación
+  - type: script
+    scripts:
+      - setup-steamcmd.sh
+
+  # Configuraciones por defecto en el rootfs
+  # - type: files
+  #   files:
+  #     - usr: /usr # Si tuvieras una carpeta 'usr' en el repo para copiar archivos al sistema
