@@ -8,7 +8,7 @@ image-version: latest # Puedes anclar a una versión específica como 41 si quie
 modules:
   # Repositorios COPR adicionales
   - type: copr
-    repos:
+    copr:
       - errornointernet/quickshell # Necesario para el entorno Ryoku
 
   # Paquetes adicionales que se instalarán
