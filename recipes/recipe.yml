@@ -37,13 +37,6 @@ modules:
       - ffmpeg
       - yt-dlp
 
-  # Brew para paquetes que no están en los repos oficiales de Fedora
-  - type: brew
-    install:
-      - yazi
-      - starship
-      - hyprpicker
-
   # Incluir comandos ujust
   - type: justfiles
     include:
