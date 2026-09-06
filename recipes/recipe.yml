@@ -1,8 +1,8 @@
 name: ryoku-os
 description: Custom Ryoku OS based on Bazzite
 
-# La imagen base (bazzite usa KDE por defecto)
-base-image: ghcr.io/ublue-os/bazzite
+# La imagen base (Hyprbazzite con Nvidia preconfigurado)
+base-image: ghcr.io/ashebanow/hyprbazzite-nvidia-open
 image-version: latest # Puedes anclar a una versión específica como 41 si quieres
 
 modules:
